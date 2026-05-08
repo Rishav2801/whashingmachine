@@ -1,0 +1,2 @@
+# whashingmachine
+ai gen washingmachine 
