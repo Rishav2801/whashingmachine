@@ -1,0 +1,1786 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Purification Process</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #1a202c;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: -150px;
+      left: -150px;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 40px;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .cta-button {
+      padding: 18px 45px;
+      font-size: 1.1rem;
+      background: white;
+      color: #667eea;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Water Drop Animation */
+    .water-drop {
+      width: 200px;
+      height: 200px;
+      margin: 40px auto;
+      position: relative;
+      animation: dropBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes dropBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    /* Section Styles */
+    section {
+      background: white;
+      border-radius: 20px;
+      padding: 60px 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #718096;
+      margin-bottom: 50px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* About Icons */
+    .about-icons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .icon-card {
+      text-align: center;
+      padding: 30px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+      transition: all 0.3s ease;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+    }
+
+    .icon-card svg {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+
+    .icon-card h3 {
+      font-size: 1.2rem;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+
+    .icon-card p {
+      font-size: 0.95rem;
+      color: #718096;
+    }
+
+    /* Process Steps */
+    .process-steps {
+      display: grid;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .step-card {
+      display: flex;
+      align-items: center;
+      padding: 30px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
+      border-left: 5px solid #667eea;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .step-card:hover::before {
+      opacity: 1;
+    }
+
+    .step-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-right: 25px;
+      flex-shrink: 0;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .step-content h3 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+
+    .step-content p {
+      font-size: 1rem;
+      color: #718096;
+      line-height: 1.6;
+    }
+
+    /* Simulation Section */
+    .simulation-container {
+      margin-top: 40px;
+    }
+
+    .simulation-canvas {
+      background: #1a202c;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    #purificationCanvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #2d3748 0%, #1a202c 100%);
+    }
+
+    .simulation-info {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+    }
+
+    .current-stage h4,
+    .physics-explanation h4 {
+      color: #667eea;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .current-stage p,
+    .physics-explanation p {
+      color: white;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .simulation-controls {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+      border-radius: 15px;
+    }
+
+    .sim-button {
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .sim-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .sim-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .speed-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .speed-control label {
+      font-weight: 600;
+      color: #2d3748;
+    }
+
+    #speedSlider {
+      width: 120px;
+    }
+
+    #speedValue {
+      font-weight: 700;
+      color: #667eea;
+      min-width: 35px;
+    }
+
+    .simulation-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .benefit-card {
+      text-align: center;
+      padding: 40px 30px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .benefit-card:hover {
+      border-color: #667eea;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+    }
+
+    .benefit-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.3rem;
+      color: #2d3748;
+      margin-bottom: 10px;
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      color: #718096;
+      line-height: 1.6;
+    }
+
+    /* Interactive Comparison */
+    .comparison-slider {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .comparison-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .water-sample {
+      text-align: center;
+    }
+
+    .water-glass {
+      width: 150px;
+      height: 200px;
+      margin: 0 auto 15px;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .water-glass.dirty {
+      background: linear-gradient(180deg, #8b7355 0%, #6b5644 100%);
+    }
+
+    .water-glass.clean {
+      background: linear-gradient(180deg, #e0f7ff 0%, #b3e5fc 100%);
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3); }
+      50% { box-shadow: 0 10px 40px rgba(102, 126, 234, 0.5); }
+    }
+
+    .arrow-icon {
+      font-size: 3rem;
+      color: #667eea;
+      animation: slideRight 1.5s ease-in-out infinite;
+    }
+
+    @keyframes slideRight {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+    }
+
+    /* FAQ Section */
+    .faq-list {
+      margin-top: 40px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: #667eea;
+    }
+
+    .faq-question {
+      padding: 20px 25px;
+      background: #f7fafc;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: #2d3748;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: #edf2f7;
+    }
+
+    .faq-question.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .faq-answer {
+      padding: 0 25px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .faq-answer.active {
+      padding: 20px 25px;
+      max-height: 500px;
+    }
+
+    .faq-answer p {
+      color: #718096;
+      line-height: 1.7;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-icon.active {
+      transform: rotate(180deg);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    footer a {
+      color: #667eea;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #764ba2;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .step-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .step-number {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .comparison-container {
+        flex-direction: column;
+      }
+
+      .arrow-icon {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Hero Section -->
+  <div class="hero">
+   <div class="hero-content">
+    <div class="water-drop">
+     <svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs>
+       <lineargradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+       </lineargradient>
+      </defs> <path d="M100,20 Q120,60 120,100 Q120,140 100,160 Q80,140 80,100 Q80,60 100,20 Z" fill="url(#waterGradient)" stroke="white" stroke-width="3" opacity="0.9" /> <ellipse cx="90" cy="80" rx="15" ry="20" fill="white" opacity="0.4" />
+     </svg>
+    </div>
+    <h1 id="main-title">How Water Purification Works</h1>
+    <p id="subtitle">A step-by-step view of the complete purification cycle inside the machine.</p><button class="cta-button" id="cta-button">Watch Simulation</button>
+   </div>
+  </div>
+  <div class="container"><!-- About Section -->
+   <section>
+    <h2 class="section-title" id="about-title">Why Water Purification Matters</h2>
+    <p class="section-subtitle" id="about-text">Clean water is essential for health. Modern purification systems remove harmful contaminants through multiple advanced filtration stages, ensuring every drop is safe to drink.</p>
+    <div class="about-icons">
+     <div class="icon-card">
+      <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#8b7355" opacity="0.7" /> <circle cx="30" cy="40" r="8" fill="#6b5644" /> <circle cx="60" cy="35" r="6" fill="#6b5644" /> <circle cx="45" cy="60" r="10" fill="#6b5644" /> <circle cx="70" cy="55" r="7" fill="#6b5644" />
+      </svg>
+      <h3>Dust &amp; Dirt</h3>
+      <p>Physical particles removed</p>
+     </div>
+     <div class="icon-card">
+      <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50,20 L60,40 L80,45 L65,60 L68,80 L50,70 L32,80 L35,60 L20,45 L40,40 Z" fill="#ff6b6b" opacity="0.8" /> <circle cx="50" cy="50" r="15" fill="#ff5252" />
+      </svg>
+      <h3>Chemicals</h3>
+      <p>Chlorine &amp; toxins absorbed</p>
+     </div>
+     <div class="icon-card">
+      <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="50" rx="35" ry="25" fill="#4caf50" opacity="0.7" /> <circle cx="40" cy="45" r="5" fill="#2e7d32" /> <circle cx="60" cy="45" r="5" fill="#2e7d32" /> <path d="M35,60 Q50,70 65,60" stroke="#2e7d32" stroke-width="3" fill="none" />
+      </svg>
+      <h3>Bacteria</h3>
+      <p>Harmful germs eliminated</p>
+     </div>
+     <div class="icon-card">
+      <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="30" width="40" height="40" fill="#9e9e9e" opacity="0.7" /> <circle cx="45" cy="45" r="8" fill="#616161" /> <circle cx="65" cy="55" r="6" fill="#616161" /> <circle cx="50" cy="65" r="7" fill="#616161" />
+      </svg>
+      <h3>Heavy Metals</h3>
+      <p>Lead, mercury filtered out</p>
+     </div>
+    </div>
+   </section><!-- Process Steps Section -->
+   <section>
+    <h2 class="section-title">The 9-Step Purification Process</h2>
+    <p class="section-subtitle">Each stage plays a crucial role in transforming contaminated water into pure, safe drinking water</p>
+    <div class="process-steps">
+     <div class="step-card">
+      <div class="step-number">
+       1
+      </div>
+      <div class="step-content">
+       <h3>Water Inlet</h3>
+       <p><strong>Physics:</strong> Gravity and pressure drive contaminated water into the system. <strong>Process:</strong> Raw water containing visible impurities enters through the inlet valve.</p>
+      </div>
+     </div>
+     <div class="step-card">
+      <div class="step-number">
+       2
+      </div>
+      <div class="step-content">
+       <h3>Pre-Filter (Mesh Screen)</h3>
+       <p><strong>Physics:</strong> Mechanical filtration using mesh barriers. <strong>Process:</strong> Large particles like sand, rust, and debris (&gt;100 microns) are trapped by the screen filter.</p>
+      </div>
+     </div>
+     <div class="step-card">
+      <div class="step-number">
+       3
+      </div>
+      <div class="step-content">
+       <h3>Sediment Filtration</h3>
+       <p><strong>Physics:</strong> Multi-layer depth filtration through porous media. <strong>Process:</strong> Water passes through polypropylene, cotton, and sand layers removing particles down to 5 microns.</p>
+      </div>
+     </div>
+     <div class="step-card">
+      <div class="step-number">
+       4
+      </div>
+      <div class="step-content">
+       <h3>Activated Carbon Filter</h3>
+       <p><strong>Physics:</strong> Adsorption - contaminants stick to carbon's porous surface (surface area: 500-1500 m²/g). <strong>Process:</strong> Chlorine, pesticides, VOCs, and odors are chemically absorbed into carbon granules.</p>
+      </div>
+     </div>
+     <div class="step-card">
+      <div class="step-number">
+       5
+      </div>
+      <div class="step-content">
+       <h3>RO Membrane (Reverse Osmosis)</h3>
+       <p><strong>Physics:</strong> Semi-permeable membrane (0.0001 micron pores) + pressure (40-100 PSI) forces water molecules through while blocking larger contaminants. <strong>Process:</strong> 95-99% of dissolved salts, heavy metals, bacteria, and viruses are rejected. Pure water passes through; waste water is flushed out.</p>
+      </div>
+     </div>
+     <div class="step-card">
+      <div class="step-number">
+       6
+      </div>
+      <div class="step-content">
+       <h3>UV Purification</h3>
+       <p><strong>Physics:</strong> UV-C light (254 nm wavelength) damages microbial DNA, preventing reproduction. <strong>Process:</strong> Water flows through a UV chamber where 99.99% of bacteria, viruses, and protozoa are neutralized without chemicals.</p>
+      </div>
+     </div>
+     <div class="step-card">
+      <div class="step-number">
+       7
+      </div>
+      <div class="step-content">
+       <h3>UF / Post-Carbon Polishing</h3>
+       <p><strong>Physics:</strong> Ultrafiltration (0.01 micron) + final carbon contact. <strong>Process:</strong> Final removal of any remaining particles and taste enhancement. Water becomes crystal clear with optimal taste.</p>
+      </div>
+     </div>
+     <div class="step-card">
+      <div class="step-number">
+       8
+      </div>
+      <div class="step-content">
+       <h3>Storage Tank</h3>
+       <p><strong>Physics:</strong> Pressurized storage with air bladder maintains flow. <strong>Process:</strong> Purified water is stored in a food-grade tank with anti-bacterial coating. Digital sensors monitor purity levels (TDS: 10-50 ppm).</p>
+      </div>
+     </div>
+     <div class="step-card">
+      <div class="step-number">
+       9
+      </div>
+      <div class="step-content">
+       <h3>Clean Water Output</h3>
+       <p><strong>Physics:</strong> Controlled flow through dispensing valve. <strong>Process:</strong> 100% purified, safe drinking water flows through the tap. Quality: 99.9% contaminant-free, pH balanced (6.5-8.5).</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Simulation Section -->
+   <section>
+    <h2 class="section-title" id="simulation-title">Interactive Water Purification Simulation</h2>
+    <p class="section-subtitle" id="simulation-desc">Watch the complete purification process in real-time with detailed physics explanations</p>
+    <div class="simulation-container">
+     <div class="simulation-canvas">
+      <canvas id="purificationCanvas" width="1000" height="600"></canvas>
+      <div class="simulation-info">
+       <div class="current-stage">
+        <h4>Current Stage:</h4>
+        <p id="stage-name">Ready to Start</p>
+       </div>
+       <div class="physics-explanation">
+        <h4>Physics Principle:</h4>
+        <p id="physics-text">Click "Start Simulation" to begin the water purification process</p>
+       </div>
+      </div>
+     </div>
+     <div class="simulation-controls"><button class="sim-button" id="startBtn" onclick="startSimulation()">▶ Start Simulation</button> <button class="sim-button" id="pauseBtn" onclick="pauseSimulation()" disabled>⏸ Pause</button> <button class="sim-button" id="resetBtn" onclick="resetSimulation()">↻ Reset</button>
+      <div class="speed-control"><label>Speed:</label> <input type="range" id="speedSlider" min="0.5" max="3" step="0.5" value="1" onchange="updateSpeed(this.value)"> <span id="speedValue">1x</span>
+      </div>
+     </div>
+     <div class="simulation-stats">
+      <div class="stat-card">
+       <div class="stat-label">
+        Water Purity
+       </div>
+       <div class="stat-value" id="purity">
+        0%
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-label">
+        Contaminants Removed
+       </div>
+       <div class="stat-value" id="contaminants">
+        0
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-label">
+        TDS Level
+       </div>
+       <div class="stat-value" id="tds">
+        500 ppm
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-label">
+        Flow Rate
+       </div>
+       <div class="stat-value" id="flowRate">
+        0 L/min
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Benefits Section -->
+   <section>
+    <h2 class="section-title" id="benefits-title">Benefits of Purified Water</h2>
+    <p class="section-subtitle">Experience the difference of truly clean water</p>
+    <div class="benefits-grid">
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20,5 Q25,12 25,20 Q25,28 20,33 Q15,28 15,20 Q15,12 20,5 Z" fill="white" opacity="0.9" /> <circle cx="18" cy="16" r="3" fill="white" />
+       </svg>
+      </div>
+      <h3>Crystal Clear</h3>
+      <p>Visibly pure water free from cloudiness, sediment, and discoloration</p>
+     </div>
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="12" fill="none" stroke="white" stroke-width="2" /> <path d="M15,20 L18,23 L25,16" stroke="white" stroke-width="2" fill="none" />
+       </svg>
+      </div>
+      <h3>99.9% Bacteria Free</h3>
+      <p>Advanced filtration removes harmful microorganisms and pathogens</p>
+     </div>
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="20" height="20" rx="3" fill="none" stroke="white" stroke-width="2" /> <line x1="15" y1="20" x2="25" y2="20" stroke="white" stroke-width="2" /> <line x1="20" y1="15" x2="20" y2="25" stroke="white" stroke-width="2" />
+       </svg>
+      </div>
+      <h3>Chemical-Free</h3>
+      <p>No chlorine, pesticides, or harmful chemical residues</p>
+     </div>
+     <div class="benefit-card">
+      <div class="benefit-icon">
+       <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20,8 L24,16 L32,17 L26,23 L28,31 L20,27 L12,31 L14,23 L8,17 L16,16 Z" fill="white" />
+       </svg>
+      </div>
+      <h3>Safe for Drinking</h3>
+      <p>Meets WHO standards for drinking water quality and safety</p>
+     </div>
+    </div>
+   </section><!-- Interactive Comparison -->
+   <section>
+    <h2 class="section-title">Before &amp; After Transformation</h2>
+    <p class="section-subtitle">See the dramatic difference purification makes</p>
+    <div class="comparison-slider">
+     <div class="comparison-container">
+      <div class="water-sample">
+       <div class="water-glass dirty"></div>
+       <h3>Before Purification</h3>
+       <p style="color: #718096;">Contaminated water with impurities</p>
+      </div>
+      <div class="arrow-icon">
+       →
+      </div>
+      <div class="water-sample">
+       <div class="water-glass clean"></div>
+       <h3>After Purification</h3>
+       <p style="color: #667eea; font-weight: 600;">Crystal clear, safe water</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- FAQ Section -->
+   <section>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Learn more about water purification technology</p>
+    <div class="faq-list">
+     <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)"><span>What is RO (Reverse Osmosis)?</span> <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+       <p>Reverse Osmosis is a water purification process that uses a semi-permeable membrane to remove ions, molecules, and larger particles. By applying pressure, water is forced through the membrane while contaminants are left behind. RO can remove up to 99% of dissolved salts, bacteria, viruses, and heavy metals, making it one of the most effective purification methods.</p>
+      </div>
+     </div>
+     <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)"><span>What does UV purification do?</span> <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+       <p>UV (Ultraviolet) purification uses UV-C light at 254 nanometers wavelength to destroy the DNA of microorganisms like bacteria, viruses, and protozoa. This prevents them from reproducing and makes them harmless. UV treatment is chemical-free, doesn't alter water taste, and is effective against 99.99% of waterborne pathogens.</p>
+      </div>
+     </div>
+     <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)"><span>Why is carbon filtration important?</span> <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+       <p>Activated carbon has an incredibly porous structure with a massive surface area (500-1500 m²/g). Through adsorption, it attracts and traps chlorine, volatile organic compounds (VOCs), pesticides, and chemicals that cause bad taste and odor. Carbon filtration significantly improves water taste and removes harmful organic contaminants that other filters might miss.</p>
+      </div>
+     </div>
+     <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)"><span>How often should filters be replaced?</span> <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+       <p>Filter replacement depends on usage and water quality. Generally: Pre-filters (3-6 months), Carbon filters (6-12 months), RO membrane (2-3 years), UV lamp (12 months). Regular maintenance ensures optimal performance and water quality. Most modern systems have indicator lights to alert you when replacement is needed.</p>
+      </div>
+     </div>
+     <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)"><span>What is TDS and why does it matter?</span> <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+       <p>TDS (Total Dissolved Solids) measures the concentration of dissolved substances in water, measured in parts per million (ppm). High TDS can indicate contamination. Ideal drinking water TDS is 50-150 ppm. RO systems typically reduce TDS to 10-50 ppm. While some minerals are beneficial, excessive TDS can include harmful contaminants like heavy metals and salts.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- Footer -->
+  <footer>
+   <p id="footer-text">© 2024 Water Purification Education | Created with Canva Code</p>
+   <p>Learn more about clean water technology</p>
+  </footer>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      main_title: "How Water Purification Works",
+      subtitle: "A step-by-step view of the complete purification cycle inside the machine.",
+      cta_button: "Watch Simulation",
+      about_title: "Why Water Purification Matters",
+      about_text: "Clean water is essential for health. Modern purification systems remove harmful contaminants through multiple advanced filtration stages, ensuring every drop is safe to drink.",
+      simulation_title: "Watch the Purification Cycle in 3D",
+      simulation_desc: "A clear look inside the machine showing how water becomes pure through each filtration stage.",
+      benefits_title: "Benefits of Purified Water",
+      footer_text: "© 2024 Water Purification Education | Created with Canva Code",
+      background_color: "#667eea",
+      secondary_color: "#764ba2",
+      text_color: "#1a202c",
+      card_background: "#ffffff",
+      accent_color: "#4facfe"
+    };
+
+    // FAQ Toggle Function
+    function toggleFAQ(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector('.faq-icon');
+      
+      // Close all other FAQs
+      document.querySelectorAll('.faq-answer').forEach(item => {
+        if (item !== answer) {
+          item.classList.remove('active');
+        }
+      });
+      
+      document.querySelectorAll('.faq-question').forEach(item => {
+        if (item !== element) {
+          item.classList.remove('active');
+        }
+      });
+      
+      document.querySelectorAll('.faq-icon').forEach(item => {
+        if (item !== icon) {
+          item.classList.remove('active');
+        }
+      });
+      
+      // Toggle current FAQ
+      answer.classList.toggle('active');
+      element.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    // Scroll to simulation on CTA click
+    document.getElementById('cta-button').addEventListener('click', () => {
+      const simulationSection = document.querySelector('.simulation-container');
+      simulationSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Water Purification Simulation
+    const canvas = document.getElementById('purificationCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let animationId;
+    let isRunning = false;
+    let isPaused = false;
+    let currentStage = 0;
+    let stageProgress = 0;
+    let simulationSpeed = 1;
+    let particles = [];
+    let contaminantsRemoved = 0;
+    let waterPurity = 0;
+    let tdsLevel = 500;
+    let flowRate = 0;
+
+    // Simulation stages with physics explanations
+    const stages = [
+      {
+        name: "Water Inlet",
+        physics: "Gravity (F=mg) and pressure (P=F/A) drive contaminated water into the system. Initial velocity v₀ = 2 m/s, pressure = 2 bar.",
+        duration: 100,
+        color: "#8b7355",
+        purityIncrease: 0,
+        tdsReduction: 0,
+        flowRate: 2.5
+      },
+      {
+        name: "Pre-Filter (Mesh Screen)",
+        physics: "Mechanical filtration using mesh barriers. Particles >100μm are trapped by sieve effect. Stokes' Law: F_drag = 6πηrv determines particle capture.",
+        duration: 120,
+        color: "#9d8566",
+        purityIncrease: 10,
+        tdsReduction: 50,
+        flowRate: 2.3
+      },
+      {
+        name: "Sediment Filtration",
+        physics: "Multi-layer depth filtration. Darcy's Law: Q = -KA(dh/dx) governs flow through porous media. Removes particles 5-100μm via interception and diffusion.",
+        duration: 150,
+        color: "#a89477",
+        purityIncrease: 20,
+        tdsReduction: 80,
+        flowRate: 2.0
+      },
+      {
+        name: "Activated Carbon Filter",
+        physics: "Adsorption process. Van der Waals forces bind contaminants to carbon surface (500-1500 m²/g). Langmuir isotherm: θ = KP/(1+KP) describes adsorption.",
+        duration: 180,
+        color: "#6b9bd1",
+        purityIncrease: 35,
+        tdsReduction: 120,
+        flowRate: 1.8
+      },
+      {
+        name: "RO Membrane",
+        physics: "Osmotic pressure π = iMRT. Applied pressure (40-100 PSI) > π forces H₂O through 0.0001μm pores. Rejection rate: R = (Cf-Cp)/Cf × 100% ≈ 95-99%.",
+        duration: 200,
+        color: "#4facfe",
+        purityIncrease: 50,
+        tdsReduction: 350,
+        flowRate: 1.2
+      },
+      {
+        name: "UV Purification",
+        physics: "UV-C photons (λ=254nm, E=4.9eV) cause thymine dimer formation in DNA. Beer-Lambert Law: I = I₀e^(-αx). Dose: 30-40 mJ/cm² kills 99.99% pathogens.",
+        duration: 100,
+        color: "#a78bfa",
+        purityIncrease: 60,
+        tdsReduction: 380,
+        flowRate: 1.5
+      },
+      {
+        name: "UF / Post-Carbon",
+        physics: "Ultrafiltration (0.01μm pores) + final carbon contact. Membrane filtration follows Hagen-Poiseuille: Q = πr⁴ΔP/8ηL. Final taste enhancement.",
+        duration: 120,
+        color: "#60d5f8",
+        purityIncrease: 75,
+        tdsReduction: 420,
+        flowRate: 1.8
+      },
+      {
+        name: "Storage Tank",
+        physics: "Pressurized storage with air bladder. Boyle's Law: P₁V₁ = P₂V₂ maintains constant pressure. Anti-bacterial coating prevents biofilm formation.",
+        duration: 150,
+        color: "#b3e5fc",
+        purityIncrease: 90,
+        tdsReduction: 450,
+        flowRate: 0
+      },
+      {
+        name: "Clean Water Output",
+        physics: "Bernoulli's equation: P + ½ρv² + ρgh = constant. Flow rate controlled by valve. Final TDS: 10-50 ppm, pH: 6.5-8.5, purity: 99.9%.",
+        duration: 100,
+        color: "#e0f7ff",
+        purityIncrease: 100,
+        tdsReduction: 490,
+        flowRate: 2.0
+      }
+    ];
+
+    // Particle class
+    class Particle {
+      constructor(x, y, type) {
+        this.x = x;
+        this.y = y;
+        this.type = type; // 'contaminant', 'water', 'bacteria'
+        this.size = type === 'bacteria' ? 4 : type === 'contaminant' ? 6 : 3;
+        this.vx = 1 + Math.random() * 2;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.alpha = 1;
+        this.removed = false;
+        this.isPure = false;
+      }
+
+      update() {
+        this.x += this.vx * simulationSpeed;
+        this.y += this.vy * simulationSpeed;
+        
+        // Bounce off top and bottom
+        if (this.y < 50 || this.y > canvas.height - 50) {
+          this.vy *= -1;
+        }
+        
+        // Water becomes clearer as it progresses
+        if (this.type === 'water' && currentStage >= 4) {
+          this.isPure = true;
+        }
+      }
+
+      draw() {
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        
+        if (this.type === 'contaminant') {
+          ctx.fillStyle = '#8b4513';
+        } else if (this.type === 'bacteria') {
+          ctx.fillStyle = '#ff4444';
+        } else {
+          // Water color changes from dirty to crystal clear
+          if (this.isPure) {
+            ctx.fillStyle = '#e0f7ff';
+            ctx.shadowBlur = 3;
+            ctx.shadowColor = '#4facfe';
+          } else {
+            const stageRatio = currentStage / stages.length;
+            const r = Math.floor(139 + (224 - 139) * stageRatio);
+            const g = Math.floor(115 + (247 - 115) * stageRatio);
+            const b = Math.floor(85 + (255 - 85) * stageRatio);
+            ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+          }
+        }
+        
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    // Initialize particles
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 30; i++) {
+        particles.push(new Particle(50 + Math.random() * 100, 100 + Math.random() * 400, 'contaminant'));
+      }
+      for (let i = 0; i < 20; i++) {
+        particles.push(new Particle(50 + Math.random() * 100, 100 + Math.random() * 400, 'bacteria'));
+      }
+      for (let i = 0; i < 50; i++) {
+        particles.push(new Particle(50 + Math.random() * 100, 100 + Math.random() * 400, 'water'));
+      }
+    }
+
+    // Draw purification machine
+    function drawMachine() {
+      // Inlet pipe (dirty water)
+      ctx.strokeStyle = '#8b7355';
+      ctx.lineWidth = 8;
+      ctx.beginPath();
+      ctx.moveTo(10, 300);
+      ctx.lineTo(50, 300);
+      ctx.stroke();
+      
+      // Inlet label
+      ctx.fillStyle = '#8b7355';
+      ctx.font = 'bold 12px Arial';
+      ctx.textAlign = 'right';
+      ctx.fillText('DIRTY', 45, 290);
+      ctx.fillText('WATER IN', 45, 305);
+      
+      // Outlet pipe (clean water)
+      ctx.strokeStyle = '#4facfe';
+      ctx.lineWidth = 8;
+      ctx.beginPath();
+      ctx.moveTo(950, 300);
+      ctx.lineTo(990, 300);
+      ctx.stroke();
+      
+      // Outlet label
+      ctx.fillStyle = '#4facfe';
+      ctx.textAlign = 'left';
+      ctx.fillText('PURE', 955, 290);
+      ctx.fillText('WATER OUT', 955, 305);
+      
+      // Animated flow arrows at inlet
+      if (isRunning && !isPaused) {
+        const arrowOffset = (Date.now() / 100) % 30;
+        ctx.fillStyle = '#8b735588';
+        for (let i = 0; i < 3; i++) {
+          const x = 15 + i * 15 - arrowOffset;
+          if (x > 10 && x < 50) {
+            ctx.beginPath();
+            ctx.moveTo(x, 295);
+            ctx.lineTo(x + 8, 300);
+            ctx.lineTo(x, 305);
+            ctx.fill();
+          }
+        }
+      }
+      
+      // Animated flow arrows at outlet (only when water is pure)
+      if (isRunning && !isPaused && currentStage >= 7) {
+        const arrowOffset = (Date.now() / 100) % 30;
+        ctx.fillStyle = '#4facfe88';
+        for (let i = 0; i < 3; i++) {
+          const x = 955 + i * 15 - arrowOffset;
+          if (x > 950 && x < 990) {
+            ctx.beginPath();
+            ctx.moveTo(x, 295);
+            ctx.lineTo(x + 8, 300);
+            ctx.lineTo(x, 305);
+            ctx.fill();
+          }
+        }
+      }
+      
+      // Machine outline
+      ctx.strokeStyle = '#4a5568';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(50, 50, 900, 500);
+      
+      // Stage dividers
+      const stageWidth = 900 / 9;
+      for (let i = 1; i < 9; i++) {
+        ctx.strokeStyle = '#2d3748';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(50 + stageWidth * i, 50);
+        ctx.lineTo(50 + stageWidth * i, 550);
+        ctx.stroke();
+      }
+      
+      // Highlight current stage
+      if (currentStage < stages.length) {
+        ctx.fillStyle = stages[currentStage].color + '33';
+        ctx.fillRect(50 + stageWidth * currentStage, 50, stageWidth, 500);
+        
+        // Stage border
+        ctx.strokeStyle = stages[currentStage].color;
+        ctx.lineWidth = 3;
+        ctx.strokeRect(50 + stageWidth * currentStage, 50, stageWidth, 500);
+      }
+      
+      // Stage labels
+      ctx.fillStyle = '#e2e8f0';
+      ctx.font = 'bold 11px Arial';
+      ctx.textAlign = 'center';
+      
+      stages.forEach((stage, index) => {
+        const x = 50 + stageWidth * index + stageWidth / 2;
+        const words = stage.name.split(' ');
+        words.forEach((word, i) => {
+          ctx.fillText(word, x, 30 + i * 12);
+        });
+      });
+    }
+
+    // Draw filter elements
+    function drawFilters() {
+      const stageWidth = 900 / 9;
+      
+      // Pre-filter mesh
+      ctx.strokeStyle = '#718096';
+      for (let i = 0; i < 10; i++) {
+        ctx.beginPath();
+        ctx.moveTo(50 + stageWidth * 1 + 30, 100 + i * 40);
+        ctx.lineTo(50 + stageWidth * 1 + 70, 100 + i * 40);
+        ctx.stroke();
+      }
+      
+      // Sediment layers
+      ctx.fillStyle = '#d4a574';
+      ctx.fillRect(50 + stageWidth * 2 + 20, 200, 60, 150);
+      ctx.fillStyle = '#8b7355';
+      ctx.fillRect(50 + stageWidth * 2 + 20, 350, 60, 100);
+      
+      // Carbon granules
+      for (let i = 0; i < 20; i++) {
+        ctx.fillStyle = '#2d3748';
+        ctx.beginPath();
+        ctx.arc(
+          50 + stageWidth * 3 + 20 + Math.random() * 60,
+          100 + Math.random() * 400,
+          3,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
+      
+      // RO membrane
+      ctx.strokeStyle = '#4facfe';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 15; i++) {
+        ctx.beginPath();
+        ctx.moveTo(50 + stageWidth * 4 + 40, 80 + i * 30);
+        ctx.lineTo(50 + stageWidth * 4 + 60, 80 + i * 30);
+        ctx.stroke();
+      }
+      
+      // UV lamp
+      if (currentStage >= 5) {
+        ctx.strokeStyle = '#a78bfa';
+        ctx.lineWidth = 8;
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = '#a78bfa';
+        ctx.beginPath();
+        ctx.moveTo(50 + stageWidth * 5 + 30, 150);
+        ctx.lineTo(50 + stageWidth * 5 + 70, 150);
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+        
+        // UV rays
+        ctx.strokeStyle = '#a78bfa44';
+        ctx.lineWidth = 2;
+        for (let i = 0; i < 8; i++) {
+          ctx.beginPath();
+          ctx.moveTo(50 + stageWidth * 5 + 50, 150);
+          ctx.lineTo(50 + stageWidth * 5 + 50, 150 + 50 + i * 40);
+          ctx.stroke();
+        }
+      }
+      
+      // Storage tank
+      ctx.strokeStyle = '#60d5f8';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(50 + stageWidth * 7 + 50, 300, 60, 0, Math.PI * 2);
+      ctx.stroke();
+      
+      // Water level in tank
+      if (currentStage >= 7) {
+        const fillLevel = Math.min(stageProgress / stages[7].duration, 1);
+        ctx.fillStyle = '#b3e5fc88';
+        ctx.beginPath();
+        ctx.arc(50 + stageWidth * 7 + 50, 300, 55, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      
+      // Output tap
+      ctx.strokeStyle = '#4a5568';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(50 + stageWidth * 8 + 50, 400);
+      ctx.lineTo(50 + stageWidth * 8 + 50, 450);
+      ctx.lineTo(50 + stageWidth * 8 + 70, 470);
+      ctx.stroke();
+      
+      // Water droplet at output
+      if (currentStage === 8 && stageProgress > 50) {
+        ctx.fillStyle = '#e0f7ff';
+        ctx.beginPath();
+        ctx.arc(50 + stageWidth * 8 + 70, 480 + (stageProgress % 20), 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Update simulation
+    function updateSimulation() {
+      if (!isRunning || isPaused) return;
+      
+      stageProgress += simulationSpeed;
+      
+      // Update particles
+      particles.forEach(particle => {
+        particle.update();
+        
+        // Remove contaminants at appropriate stages
+        const stageWidth = 900 / 9;
+        const stageX = 50 + stageWidth * currentStage;
+        
+        if (particle.x > stageX && particle.x < stageX + stageWidth) {
+          if (currentStage === 1 && particle.type === 'contaminant' && particle.size > 5) {
+            particle.alpha -= 0.02 * simulationSpeed;
+            if (particle.alpha <= 0) {
+              particle.removed = true;
+              contaminantsRemoved++;
+            }
+          }
+          if (currentStage === 2 && particle.type === 'contaminant') {
+            particle.alpha -= 0.015 * simulationSpeed;
+            if (particle.alpha <= 0) {
+              particle.removed = true;
+              contaminantsRemoved++;
+            }
+          }
+          if (currentStage === 3 && particle.type === 'contaminant') {
+            particle.alpha -= 0.01 * simulationSpeed;
+            if (particle.alpha <= 0) {
+              particle.removed = true;
+              contaminantsRemoved++;
+            }
+          }
+          if (currentStage === 4 && (particle.type === 'contaminant' || particle.type === 'bacteria')) {
+            particle.alpha -= 0.02 * simulationSpeed;
+            if (particle.alpha <= 0) {
+              particle.removed = true;
+              contaminantsRemoved++;
+            }
+          }
+          if (currentStage === 5 && particle.type === 'bacteria') {
+            particle.alpha -= 0.03 * simulationSpeed;
+            if (particle.alpha <= 0) {
+              particle.removed = true;
+              contaminantsRemoved++;
+            }
+          }
+        }
+      });
+      
+      // Remove dead particles
+      particles = particles.filter(p => !p.removed);
+      
+      // Update stats
+      if (currentStage < stages.length) {
+        waterPurity = stages[currentStage].purityIncrease;
+        tdsLevel = 500 - stages[currentStage].tdsReduction;
+        flowRate = stages[currentStage].flowRate;
+      }
+      
+      // Move to next stage
+      if (stageProgress >= stages[currentStage].duration) {
+        stageProgress = 0;
+        currentStage++;
+        
+        if (currentStage >= stages.length) {
+          completeSimulation();
+          return;
+        }
+        
+        updateStageInfo();
+      }
+      
+      updateStats();
+    }
+
+    // Draw everything
+    function draw() {
+      // Clear canvas
+      ctx.fillStyle = '#1a202c';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw machine and filters
+      drawMachine();
+      drawFilters();
+      
+      // Draw particles
+      particles.forEach(particle => particle.draw());
+      
+      // Draw progress bar
+      if (currentStage < stages.length) {
+        const progress = stageProgress / stages[currentStage].duration;
+        ctx.fillStyle = '#2d3748';
+        ctx.fillRect(100, 570, 800, 20);
+        ctx.fillStyle = stages[currentStage].color;
+        ctx.fillRect(100, 570, 800 * progress, 20);
+        
+        ctx.strokeStyle = '#4a5568';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(100, 570, 800, 20);
+      }
+      
+      // Water quality comparison display
+      const leftX = 20;
+      const rightX = 920;
+      const glassY = 100;
+      const glassWidth = 50;
+      const glassHeight = 80;
+      
+      // Left glass - Dirty water (input)
+      ctx.fillStyle = '#8b735588';
+      ctx.fillRect(leftX, glassY, glassWidth, glassHeight);
+      ctx.strokeStyle = '#ffffff44';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(leftX, glassY, glassWidth, glassHeight);
+      
+      // Dirty water particles in left glass
+      ctx.fillStyle = '#6b5644';
+      for (let i = 0; i < 8; i++) {
+        ctx.beginPath();
+        ctx.arc(leftX + 15 + Math.random() * 20, glassY + 20 + Math.random() * 40, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      
+      ctx.fillStyle = '#8b7355';
+      ctx.font = 'bold 10px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('DIRTY', leftX + glassWidth / 2, glassY + glassHeight + 15);
+      ctx.fillText('WATER', leftX + glassWidth / 2, glassY + glassHeight + 27);
+      
+      // Right glass - Clean water (output) - only show when purification is advanced
+      if (currentStage >= 4) {
+        const purityRatio = Math.min(currentStage / 8, 1);
+        const r = Math.floor(139 + (224 - 139) * purityRatio);
+        const g = Math.floor(115 + (247 - 115) * purityRatio);
+        const b = Math.floor(85 + (255 - 85) * purityRatio);
+        
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.6)`;
+        ctx.fillRect(rightX, glassY, glassWidth, glassHeight);
+        ctx.strokeStyle = '#ffffff44';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(rightX, glassY, glassWidth, glassHeight);
+        
+        // Sparkle effect for pure water
+        if (currentStage >= 7) {
+          ctx.fillStyle = '#ffffff';
+          for (let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            ctx.arc(rightX + 10 + Math.random() * 30, glassY + 10 + Math.random() * 60, 1, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        
+        ctx.fillStyle = '#4facfe';
+        ctx.font = 'bold 10px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('PURE', rightX + glassWidth / 2, glassY + glassHeight + 15);
+        ctx.fillText('WATER', rightX + glassWidth / 2, glassY + glassHeight + 27);
+      } else {
+        // Show empty glass with question mark
+        ctx.strokeStyle = '#ffffff44';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(rightX, glassY, glassWidth, glassHeight);
+        
+        ctx.fillStyle = '#ffffff44';
+        ctx.font = 'bold 20px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('?', rightX + glassWidth / 2, glassY + glassHeight / 2 + 7);
+      }
+      
+      if (isRunning && !isPaused) {
+        updateSimulation();
+        animationId = requestAnimationFrame(draw);
+      }
+    }
+
+    // Update stage info
+    function updateStageInfo() {
+      if (currentStage < stages.length) {
+        document.getElementById('stage-name').textContent = stages[currentStage].name;
+        document.getElementById('physics-text').textContent = stages[currentStage].physics;
+      }
+    }
+
+    // Update stats display
+    function updateStats() {
+      document.getElementById('purity').textContent = waterPurity + '%';
+      document.getElementById('contaminants').textContent = contaminantsRemoved;
+      document.getElementById('tds').textContent = Math.round(tdsLevel) + ' ppm';
+      document.getElementById('flowRate').textContent = flowRate.toFixed(1) + ' L/min';
+    }
+
+    // Control functions
+    function startSimulation() {
+      if (!isRunning) {
+        isRunning = true;
+        isPaused = false;
+        initParticles();
+        currentStage = 0;
+        stageProgress = 0;
+        contaminantsRemoved = 0;
+        updateStageInfo();
+        document.getElementById('startBtn').disabled = true;
+        document.getElementById('pauseBtn').disabled = false;
+        draw();
+      } else if (isPaused) {
+        isPaused = false;
+        document.getElementById('pauseBtn').textContent = '⏸ Pause';
+        draw();
+      }
+    }
+
+    function pauseSimulation() {
+      if (isRunning && !isPaused) {
+        isPaused = true;
+        document.getElementById('pauseBtn').textContent = '▶ Resume';
+        cancelAnimationFrame(animationId);
+      } else if (isPaused) {
+        isPaused = false;
+        document.getElementById('pauseBtn').textContent = '⏸ Pause';
+        draw();
+      }
+    }
+
+    function resetSimulation() {
+      isRunning = false;
+      isPaused = false;
+      currentStage = 0;
+      stageProgress = 0;
+      contaminantsRemoved = 0;
+      waterPurity = 0;
+      tdsLevel = 500;
+      flowRate = 0;
+      particles = [];
+      
+      cancelAnimationFrame(animationId);
+      
+      document.getElementById('startBtn').disabled = false;
+      document.getElementById('pauseBtn').disabled = true;
+      document.getElementById('pauseBtn').textContent = '⏸ Pause';
+      document.getElementById('stage-name').textContent = 'Ready to Start';
+      document.getElementById('physics-text').textContent = 'Click "Start Simulation" to begin the water purification process';
+      
+      updateStats();
+      
+      // Draw initial state
+      ctx.fillStyle = '#1a202c';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      drawMachine();
+      drawFilters();
+    }
+
+    function updateSpeed(value) {
+      simulationSpeed = parseFloat(value);
+      document.getElementById('speedValue').textContent = value + 'x';
+    }
+
+    function completeSimulation() {
+      isRunning = false;
+      document.getElementById('stage-name').textContent = 'Simulation Complete!';
+      document.getElementById('physics-text').textContent = 'Water purification cycle completed successfully. 99.9% pure water achieved with TDS reduced from 500 ppm to ' + Math.round(tdsLevel) + ' ppm.';
+      document.getElementById('startBtn').disabled = false;
+      document.getElementById('pauseBtn').disabled = true;
+    }
+
+    // Initialize canvas
+    resetSimulation();
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.step-card, .benefit-card, .icon-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Element SDK Implementation
+    async function onConfigChange(config) {
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('subtitle').textContent = config.subtitle || defaultConfig.subtitle;
+      document.getElementById('cta-button').textContent = config.cta_button || defaultConfig.cta_button;
+      document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+      document.getElementById('simulation-title').textContent = config.simulation_title || defaultConfig.simulation_title;
+      document.getElementById('simulation-desc').textContent = config.simulation_desc || defaultConfig.simulation_desc;
+      document.getElementById('benefits-title').textContent = config.benefits_title || defaultConfig.benefits_title;
+      document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+
+      // Apply colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const cardBg = config.card_background || defaultConfig.card_background;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+
+      document.querySelector('.hero').style.background = `linear-gradient(135deg, ${bgColor} 0%, ${secondaryColor} 100%)`;
+      document.querySelectorAll('.section-title').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${bgColor} 0%, ${secondaryColor} 100%)`;
+        el.style.webkitBackgroundClip = 'text';
+        el.style.webkitTextFillColor = 'transparent';
+        el.style.backgroundClip = 'text';
+      });
+      
+      document.querySelectorAll('.step-number').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${bgColor} 0%, ${secondaryColor} 100%)`;
+      });
+      
+      document.querySelectorAll('.benefit-icon').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${bgColor} 0%, ${secondaryColor} 100%)`;
+      });
+      
+      document.querySelector('.simulation-box').style.background = `linear-gradient(135deg, ${bgColor} 0%, ${secondaryColor} 100%)`;
+      document.querySelector('.cta-button').style.color = bgColor;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.card_background || defaultConfig.card_background,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.card_background = value;
+                window.elementSdk.setConfig({ card_background: value });
+              }
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["main_title", config.main_title || defaultConfig.main_title],
+        ["subtitle", config.subtitle || defaultConfig.subtitle],
+        ["cta_button", config.cta_button || defaultConfig.cta_button],
+        ["about_title", config.about_title || defaultConfig.about_title],
+        ["about_text", config.about_text || defaultConfig.about_text],
+        ["simulation_title", config.simulation_title || defaultConfig.simulation_title],
+        ["simulation_desc", config.simulation_desc || defaultConfig.simulation_desc],
+        ["benefits_title", config.benefits_title || defaultConfig.benefits_title],
+        ["footer_text", config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0e42ab42cd8ee8',t:'MTc2MzU0MDEzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
